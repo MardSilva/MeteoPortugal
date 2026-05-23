@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MeteoPortugal.App.Components.WeatherWarningCard"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Border Padding="16" BackgroundColor="#FFF6E5" Stroke="#F4B942" StrokeThickness="1">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="8" />
+        </Border.StrokeShape>
+        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="6">
+            <Border
+                Grid.RowSpan="3"
+                BackgroundColor="#F4B942"
+                HeightRequest="34"
+                StrokeThickness="0"
+                VerticalOptions="Start"
+                WidthRequest="34">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Text="!"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+            </Border>
+
+            <Grid Grid.Column="1" ColumnDefinitions="*,Auto">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    Text="{Binding Type}"
+                    TextColor="{StaticResource WeatherText}" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    Text="{Binding Level}"
+                    TextColor="#B36B00" />
+            </Grid>
+
+            <Label
+                Grid.Column="1"
+                Grid.Row="1"
+                FontSize="13"
+                Text="{Binding Text}"
+                TextColor="{StaticResource WeatherMutedText}" />
+
+            <Label
+                Grid.Column="1"
+                Grid.Row="2"
+                FontSize="12"
+                TextColor="#805500">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="De " />
+                        <Span Text="{Binding StartsAt}" />
+                        <Span Text=" a " />
+                        <Span Text="{Binding EndsAt}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+    </Border>
+</ContentView>

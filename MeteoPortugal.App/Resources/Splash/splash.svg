@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="456" height="456" viewBox="0 0 456 456" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#CFEAFF"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE87A"/>
+      <stop offset="1" stop-color="#FDB515"/>
+    </linearGradient>
+  </defs>
+  <circle cx="286" cy="174" r="84" fill="url(#sun)"/>
+  <path d="M139 296c-34 0-62-27-62-61 0-31 23-57 53-61 12-43 52-74 99-74 49 0 91 34 101 80 29 3 52 28 52 58 0 32-26 58-58 58H139z" fill="url(#cloud)"/>
+  <path d="M139 296c-34 0-62-27-62-61 0-31 23-57 53-61 12-43 52-74 99-74 49 0 91 34 101 80 29 3 52 28 52 58 0 32-26 58-58 58H139z" fill="none" stroke="#FFFFFF" stroke-opacity="0.68" stroke-width="10"/>
+</svg>

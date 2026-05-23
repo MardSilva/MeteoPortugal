@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MeteoPortugal.App.Components.WeatherMetricCard"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Border Padding="16" Style="{StaticResource WeatherCardBorder}">
+        <VerticalStackLayout Spacing="4">
+            <Label
+                FontSize="13"
+                Text="{Binding Title}"
+                TextColor="{StaticResource WeatherMutedText}" />
+            <HorizontalStackLayout Spacing="4">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    Text="{Binding Value}"
+                    TextColor="{StaticResource WeatherText}" />
+                <Label
+                    FontSize="14"
+                    Text="{Binding Unit}"
+                    TextColor="{StaticResource WeatherMutedText}"
+                    VerticalTextAlignment="End" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Border>
+</ContentView>

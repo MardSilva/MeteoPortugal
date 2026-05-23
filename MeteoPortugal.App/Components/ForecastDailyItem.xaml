@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MeteoPortugal.App.Components.ForecastDailyItem"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Border Padding="16" BackgroundColor="White" Stroke="#D7E3EF" StrokeThickness="1">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="8" />
+        </Border.StrokeShape>
+        <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="12">
+            <Image
+                Grid.RowSpan="2"
+                HeightRequest="38"
+                Source="{Binding WeatherIcon}"
+                VerticalOptions="Center"
+                WidthRequest="38" />
+            <Label Grid.Column="1" FontAttributes="Bold" Text="{Binding Day}" TextColor="#102A43" />
+            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Condition}" TextColor="#5B6773" />
+            <HorizontalStackLayout Grid.Column="2" Grid.RowSpan="2" Spacing="2">
+                <Label
+                    FontAttributes="Bold"
+                    Text="{Binding MaximumTemperatureCelsius, StringFormat='{0:F0}&#176;'}"
+                    TextColor="#102A43" />
+                <Label Text="/" TextColor="#5B6773" />
+                <Label
+                    Text="{Binding MinimumTemperatureCelsius, StringFormat='{0:F0}&#176;'}"
+                    TextColor="#5B6773" />
+            </HorizontalStackLayout>
+        </Grid>
+    </Border>
+</ContentView>

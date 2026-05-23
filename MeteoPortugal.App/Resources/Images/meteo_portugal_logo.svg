@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="720" height="160" viewBox="0 0 720 160" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="markbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#37BCFF"/>
+      <stop offset="0.55" stop-color="#0F6CBD"/>
+      <stop offset="1" stop-color="#073B8E"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#CFEAFF"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE87A"/>
+      <stop offset="1" stop-color="#FDB515"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="18" width="124" height="124" rx="28" fill="url(#markbg)"/>
+  <circle cx="88" cy="67" r="29" fill="url(#sun)"/>
+  <path d="M47 104c-15 0-27-12-27-26 0-13 10-24 23-26 5-19 23-32 43-32 21 0 39 15 43 34 13 1 22 12 22 25 0 14-11 25-25 25H47z" fill="url(#cloud)" transform="translate(0,12)"/>
+  <text x="164" y="76" fill="#102A43" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Meteo</text>
+  <text x="164" y="119" fill="#0F6CBD" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Portugal</text>
+</svg>

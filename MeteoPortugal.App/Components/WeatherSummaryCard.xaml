@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MeteoPortugal.App.Components.WeatherSummaryCard"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Border
+        Padding="24"
+        Background="{StaticResource WeatherHeroBrush}"
+        StrokeThickness="0">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="8" />
+        </Border.StrokeShape>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="22">
+            <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Spacing="3">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="28"
+                        Text="{Binding Location.Name}"
+                        TextColor="White" />
+                    <Label
+                        FontSize="14"
+                        Text="{Binding UpdatedAt}"
+                        TextColor="#DDEEFF" />
+                </VerticalStackLayout>
+                <Border
+                    Grid.Column="1"
+                    Padding="10,6"
+                    BackgroundColor="#2CFFFFFF"
+                    StrokeThickness="0"
+                    VerticalOptions="Start">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Text="IPMA"
+                        TextColor="White" />
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="1" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
+                <VerticalStackLayout Spacing="8" VerticalOptions="Center">
+                    <Label
+                        FontSize="20"
+                        Text="{Binding Condition}"
+                        TextColor="White" />
+                    <HorizontalStackLayout Spacing="10">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="{Binding MaximumTemperatureCelsius, StringFormat='Max {0:F0}&#176;'}"
+                            TextColor="#EAF6FF" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            Text="{Binding MinimumTemperatureCelsius, StringFormat='Min {0:F0}&#176;'}"
+                        TextColor="#EAF6FF" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <Image
+                    Grid.Column="1"
+                    HeightRequest="82"
+                    Source="{Binding WeatherIcon}"
+                    VerticalOptions="Center"
+                    WidthRequest="82" />
+                <Label
+                    Grid.Column="2"
+                    FontAttributes="Bold"
+                    FontSize="76"
+                    HorizontalTextAlignment="End"
+                    Text="{Binding TemperatureCelsius, StringFormat='{0:F0}&#176;'}"
+                    TextColor="White" />
+            </Grid>
+
+            <Grid
+                Grid.Row="2"
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="10">
+                <Border Padding="12" BackgroundColor="#24FFFFFF" StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="3">
+                        <Label FontSize="12" Text="Vento" TextColor="#DDEEFF" />
+                        <Label FontAttributes="Bold" FontSize="17" Text="{Binding WindSpeedKmh, StringFormat='{0:F0} km/h'}" TextColor="White" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="1" Padding="12" BackgroundColor="#24FFFFFF" StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="3">
+                        <Label FontSize="12" Text="Chuva" TextColor="#DDEEFF" />
+                        <Label FontAttributes="Bold" FontSize="17" Text="{Binding PrecipitationProbabilityPercent, StringFormat='{0}%'}" TextColor="White" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="2" Padding="12" BackgroundColor="#24FFFFFF" StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="3">
+                        <Label FontSize="12" Text="UV" TextColor="#DDEEFF" />
+                        <Label FontAttributes="Bold" FontSize="17" Text="{Binding UvIndex}" TextColor="White" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="3" ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                <Ellipse Fill="#FFCC3D" HeightRequest="14" WidthRequest="14" VerticalOptions="Center" />
+                <Label
+                    Grid.Column="1"
+                    FontSize="13"
+                    Text="{Binding ObservationStation, StringFormat='Dados: IPMA · Estacao {0}'}"
+                    TextColor="#DDEEFF" />
+            </Grid>
+        </Grid>
+    </Border>
+</ContentView>

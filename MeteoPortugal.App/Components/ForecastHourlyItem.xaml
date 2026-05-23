@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MeteoPortugal.App.Components.ForecastHourlyItem"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Border
+        Padding="14"
+        BackgroundColor="White"
+        Stroke="#D7E3EF"
+        StrokeThickness="1"
+        WidthRequest="112">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="8" />
+        </Border.StrokeShape>
+        <VerticalStackLayout HorizontalOptions="Center" Spacing="6">
+            <Label HorizontalTextAlignment="Center" Text="{Binding Time}" TextColor="#5B6773" />
+            <Image HeightRequest="34" Source="{Binding WeatherIcon}" WidthRequest="34" />
+            <Label FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding TemperatureCelsius, StringFormat='{0:F0}&#176;C'}" TextColor="#102A43" />
+            <Label FontSize="12" HorizontalTextAlignment="Center" Text="{Binding Condition}" TextColor="#5B6773" />
+        </VerticalStackLayout>
+    </Border>
+</ContentView>

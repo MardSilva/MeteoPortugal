@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MeteoPortugal.App.Views.OnboardingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Bem-vindo"
+    BackgroundColor="{StaticResource WeatherSky}">
+    <Grid Padding="24" RowDefinitions="Auto,*,Auto" RowSpacing="20">
+        <VerticalStackLayout Spacing="16">
+            <Image
+                HeightRequest="56"
+                HorizontalOptions="Start"
+                Source="meteo_portugal_logo.svg"
+                WidthRequest="230" />
+
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="32"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource WeatherText}" />
+                <Label
+                    FontSize="16"
+                    Text="{Binding Subtitle}"
+                    TextColor="{StaticResource WeatherMutedText}" />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1" Spacing="14">
+            <Grid ColumnDefinitions="*,Auto">
+                <Label
+                    Style="{StaticResource SectionTitleLabel}"
+                    Text="Localização inicial" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    Text="{Binding LocationCount, StringFormat='{0} locais IPMA'}"
+                    TextColor="{StaticResource WeatherBlue}" />
+            </Grid>
+
+            <Border
+                Padding="4"
+                BackgroundColor="{StaticResource WeatherSurface}"
+                Stroke="{StaticResource WeatherBlue}"
+                StrokeThickness="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <SearchBar
+                    Placeholder="Pesquisar localidade"
+                    Text="{Binding SearchText}"
+                    TextColor="{StaticResource WeatherText}" />
+            </Border>
+
+            <CollectionView
+                IsGrouped="True"
+                ItemsSource="{Binding GroupedLocations}"
+                SelectedItem="{Binding SelectedLocation}"
+                SelectionMode="Single">
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Label
+                            Padding="2,8,2,6"
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            Text="{Binding Name}"
+                            TextColor="{StaticResource WeatherBlue}" />
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.EmptyView>
+                    <Label
+                        Padding="0,24"
+                        HorizontalTextAlignment="Center"
+                        Text="Sem localidades encontradas."
+                        TextColor="{StaticResource WeatherMutedText}" />
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Margin="0,0,0,10"
+                            Padding="16"
+                            Style="{StaticResource WeatherCardBorder}">
+                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="4">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="19"
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource WeatherText}" />
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="13"
+                                    Text="{Binding District, StringFormat='Região {0}'}"
+                                    TextColor="{StaticResource WeatherMutedText}" />
+                                <Label
+                                    Grid.Column="1"
+                                    Grid.RowSpan="2"
+                                    FontAttributes="Bold"
+                                    Text="Escolher"
+                                    TextColor="{StaticResource WeatherBlue}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+        <Button
+            Grid.Row="2"
+            Command="{Binding ContinueCommand}"
+            Text="Continuar" />
+    </Grid>
+</ContentPage>

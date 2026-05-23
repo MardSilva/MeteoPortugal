@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MeteoPortugal.App.Views.ObservationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:MeteoPortugal.App.Components"
+    Title="Observação"
+    BackgroundColor="{StaticResource WeatherSky}">
+    <RefreshView Command="{Binding LoadCommand}" IsRefreshing="{Binding IsLoading}">
+        <ScrollView>
+            <VerticalStackLayout Padding="24" Spacing="18">
+                <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        Text="{Binding Title}"
+                        TextColor="{StaticResource WeatherText}" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="15"
+                        Text="{Binding LastUpdated}"
+                        TextColor="{StaticResource WeatherMutedText}" />
+                    <Border
+                        Grid.Column="1"
+                        Grid.RowSpan="2"
+                        Padding="10,6"
+                        BackgroundColor="#1A0F6CBD"
+                        StrokeThickness="0"
+                        VerticalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            Text="{Binding LocationName}"
+                            TextColor="{StaticResource WeatherBlue}" />
+                    </Border>
+                </Grid>
+
+                <Border Padding="14" Style="{StaticResource WeatherCardBorder}">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                        <Label
+                            FontAttributes="Bold"
+                            Text="Produto"
+                            TextColor="{StaticResource WeatherText}"
+                            VerticalTextAlignment="Center" />
+                        <Picker
+                            Grid.Column="1"
+                            ItemsSource="{Binding Modes}"
+                            SelectedItem="{Binding SelectedMode}" />
+                    </Grid>
+                </Border>
+
+                <Border
+                    IsVisible="{Binding HasStatusMessage}"
+                    Padding="14"
+                    BackgroundColor="#FFF6E5"
+                    Stroke="#F4B942"
+                    StrokeThickness="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <Label
+                        FontSize="13"
+                        Text="{Binding StatusMessage}"
+                        TextColor="#805500" />
+                </Border>
+
+                <VerticalStackLayout IsVisible="{Binding IsMapVisible}" Spacing="16">
+                    <components:ObservationStationMap Stations="{Binding Stations}" />
+
+                    <Label
+                        Style="{StaticResource SectionTitleLabel}"
+                        Text="Estações próximas" />
+
+                    <CollectionView ItemsSource="{Binding Stations}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Margin="0,0,0,12"
+                                    Padding="16"
+                                    Style="{StaticResource WeatherCardBorder}">
+                                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" RowSpacing="8">
+                                        <VerticalStackLayout Spacing="2">
+                                            <Label
+                                                FontAttributes="Bold"
+                                                FontSize="17"
+                                                Text="{Binding Name}"
+                                                TextColor="{StaticResource WeatherText}" />
+                                            <Label
+                                                FontSize="12"
+                                                Text="{Binding DistanceKm, StringFormat='{0:F1} km de distância'}"
+                                                TextColor="{StaticResource WeatherMutedText}" />
+                                        </VerticalStackLayout>
+
+                                        <Label
+                                            Grid.Column="1"
+                                            FontAttributes="Bold"
+                                            FontSize="28"
+                                            Text="{Binding TemperatureCelsius, StringFormat='{0:F1}&#176;'}"
+                                            TextColor="{StaticResource WeatherBlue}" />
+
+                                        <Grid Grid.Row="1" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                                            <Label Text="{Binding HumidityPercent, StringFormat='Hum {0:F0}%'}" TextColor="{StaticResource WeatherMutedText}" />
+                                            <Label Grid.Column="1" Text="{Binding WindSpeedKmh, StringFormat='Vento {0:F0} km/h'}" TextColor="{StaticResource WeatherMutedText}" />
+                                            <Label Grid.Column="2" Text="{Binding PressureHpa, StringFormat='{0:F0} hPa'}" TextColor="{StaticResource WeatherMutedText}" />
+                                        </Grid>
+
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.ColumnSpan="2"
+                                            FontSize="12"
+                                            Text="{Binding ObservedAt, StringFormat='Observado {0}'}"
+                                            TextColor="{StaticResource WeatherMutedText}" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout IsVisible="{Binding IsRemoteVisible}" Spacing="12">
+                    <Label
+                        Style="{StaticResource SectionTitleLabel}"
+                        Text="{Binding RemoteTitle}" />
+                    <Border
+                        HeightRequest="520"
+                        Style="{StaticResource WeatherCardBorder}">
+                        <WebView Source="{Binding RemoteSource}" />
+                    </Border>
+                    <Label
+                        FontSize="12"
+                        Text="Conteúdo remoto oficial do IPMA. A disponibilidade e o formato podem variar."
+                        TextColor="{StaticResource WeatherMutedText}" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

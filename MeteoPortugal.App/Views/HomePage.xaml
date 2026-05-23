@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MeteoPortugal.App.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:MeteoPortugal.App.Components"
+    Title="Hoje"
+    BackgroundColor="{StaticResource WeatherSky}">
+    <RefreshView Command="{Binding LoadCommand}" IsRefreshing="{Binding IsLoading}">
+        <ScrollView>
+            <VerticalStackLayout Padding="24" Spacing="22">
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                    <Image
+                        HeightRequest="52"
+                        Source="meteo_portugal_logo.svg"
+                        VerticalOptions="Center"
+                        WidthRequest="220" />
+                </Grid>
+
+                <components:WeatherSummaryCard BindingContext="{Binding CurrentWeather}" />
+
+                <Border
+                    IsVisible="{Binding HasStatusMessage}"
+                    Padding="14"
+                    BackgroundColor="#FFF6E5"
+                    Stroke="#F4B942"
+                    StrokeThickness="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <Label
+                        FontSize="13"
+                        Text="{Binding StatusMessage}"
+                        TextColor="#805500" />
+                </Border>
+
+                <VerticalStackLayout IsVisible="{Binding HasWarnings}" Spacing="12">
+                    <Label
+                        Style="{StaticResource SectionTitleLabel}"
+                        Text="Avisos meteorológicos"
+                        TextColor="{StaticResource WeatherText}" />
+                    <CollectionView ItemsSource="{Binding Warnings}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <components:WeatherWarningCard Margin="0,0,0,10" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <Label
+                    Style="{StaticResource SectionTitleLabel}"
+                    Text="Detalhes"
+                    TextColor="{StaticResource WeatherText}" />
+                <CollectionView ItemsSource="{Binding Metrics}" SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="12" VerticalItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <components:WeatherMetricCard />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label
+                    Style="{StaticResource SectionTitleLabel}"
+                    Text="Próximas horas"
+                    TextColor="{StaticResource WeatherText}" />
+                <CollectionView ItemsSource="{Binding HourlyForecast}" SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <components:ForecastHourlyItem />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label
+                    Style="{StaticResource SectionTitleLabel}"
+                    Text="Próximos dias"
+                    TextColor="{StaticResource WeatherText}" />
+                <CollectionView ItemsSource="{Binding DailyForecast}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <components:ForecastDailyItem />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

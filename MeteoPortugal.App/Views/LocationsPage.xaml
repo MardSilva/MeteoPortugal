@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MeteoPortugal.App.Views.LocationsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:MeteoPortugal.App.Components"
+    Title="Locais"
+    BackgroundColor="{StaticResource WeatherSky}">
+    <RefreshView Command="{Binding LoadCommand}" IsRefreshing="{Binding IsLoading}">
+        <ScrollView>
+            <VerticalStackLayout Padding="24" Spacing="18">
+                <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        Text="Escolha a localidade"
+                        TextColor="{StaticResource WeatherText}" />
+                    <Border
+                        Grid.Column="1"
+                        Padding="10,6"
+                        BackgroundColor="#1A0F6CBD"
+                        StrokeThickness="0"
+                        VerticalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            Text="{Binding LocationCount, StringFormat='{0} locais'}"
+                            TextColor="{StaticResource WeatherBlue}" />
+                    </Border>
+                    <Label
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        FontSize="15"
+                        Text="Pesquise e acompanhe as cidades guardadas."
+                        TextColor="{StaticResource WeatherMutedText}" />
+                </Grid>
+
+                <Border
+                    Padding="4"
+                    BackgroundColor="{StaticResource WeatherSurface}"
+                    Stroke="{StaticResource WeatherBlue}"
+                    StrokeThickness="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <SearchBar
+                        CancelButtonColor="{StaticResource WeatherMutedText}"
+                        Placeholder="Pesquisar localidade"
+                        SearchCommand="{Binding LoadCommand}"
+                        Text="{Binding SearchText}"
+                        TextColor="{StaticResource WeatherText}" />
+                </Border>
+
+                <CollectionView ItemsSource="{Binding Locations}" SelectionMode="None">
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout Padding="0,32" Spacing="8">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalTextAlignment="Center"
+                                Text="Sem resultados"
+                                TextColor="{StaticResource WeatherText}" />
+                            <Label
+                                FontSize="14"
+                                HorizontalTextAlignment="Center"
+                                Text="Tente pesquisar Lisboa ou Porto."
+                                TextColor="{StaticResource WeatherMutedText}" />
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <components:LocationWeatherCard Margin="0,0,0,12" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+</ContentPage>
