@@ -32,7 +32,7 @@ public partial class SettingsViewModel : ObservableObject
         this.userPreferencesService = userPreferencesService;
     }
 
-    public string Title { get; } = "Definicoes";
+    public string Title { get; } = "Definições";
 
     public ObservableCollection<WeatherLocation> FilteredLocations { get; } = [];
 

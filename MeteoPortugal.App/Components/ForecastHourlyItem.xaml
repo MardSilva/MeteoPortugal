@@ -5,18 +5,24 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Border
         Padding="14"
-        BackgroundColor="White"
-        Stroke="#D7E3EF"
-        StrokeThickness="1"
+        Style="{StaticResource WeatherCardBorder}"
         WidthRequest="112">
-        <Border.StrokeShape>
-            <RoundRectangle CornerRadius="8" />
-        </Border.StrokeShape>
         <VerticalStackLayout HorizontalOptions="Center" Spacing="6">
-            <Label HorizontalTextAlignment="Center" Text="{Binding Time}" TextColor="#5B6773" />
+            <Label
+                HorizontalTextAlignment="Center"
+                Text="{Binding Time}"
+                TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
             <Image HeightRequest="34" Source="{Binding WeatherIcon}" WidthRequest="34" />
-            <Label FontAttributes="Bold" HorizontalTextAlignment="Center" Text="{Binding TemperatureCelsius, StringFormat='{0:F0}&#176;C'}" TextColor="#102A43" />
-            <Label FontSize="12" HorizontalTextAlignment="Center" Text="{Binding Condition}" TextColor="#5B6773" />
+            <Label
+                FontFamily="{StaticResource FontFamilySemiBold}"
+                HorizontalTextAlignment="Center"
+                Text="{Binding TemperatureCelsius, StringFormat='{0:F0}&#176;C'}"
+                TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
+            <Label
+                FontSize="12"
+                HorizontalTextAlignment="Center"
+                Text="{Binding Condition}"
+                TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
         </VerticalStackLayout>
     </Border>
 </ContentView>

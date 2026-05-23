@@ -5,69 +5,65 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:components="clr-namespace:MeteoPortugal.App.Components"
     Title="Locais"
-    BackgroundColor="{StaticResource WeatherSky}">
+    BackgroundColor="{AppThemeBinding Light={StaticResource ColorBackground}, Dark={StaticResource DarkColorBackground}}">
     <RefreshView Command="{Binding LoadCommand}" IsRefreshing="{Binding IsLoading}">
         <ScrollView>
             <VerticalStackLayout Padding="24" Spacing="18">
                 <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
                     <Label
-                        FontAttributes="Bold"
+                        FontFamily="{StaticResource FontFamilyBold}"
                         FontSize="30"
                         Text="Escolha a localidade"
-                        TextColor="{StaticResource WeatherText}" />
+                        TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                     <Border
                         Grid.Column="1"
                         Padding="10,6"
-                        BackgroundColor="#1A0F6CBD"
-                        StrokeThickness="0"
+                        Style="{StaticResource WeatherBadgeBorder}"
                         VerticalOptions="Center">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="8" />
-                        </Border.StrokeShape>
                         <Label
-                            FontAttributes="Bold"
+                            FontFamily="{StaticResource FontFamilySemiBold}"
                             FontSize="12"
                             Text="{Binding LocationCount, StringFormat='{0} locais'}"
-                            TextColor="{StaticResource WeatherBlue}" />
+                            TextColor="{AppThemeBinding Light={StaticResource ColorPrimary}, Dark={StaticResource DarkColorPrimary}}" />
                     </Border>
                     <Label
                         Grid.Row="1"
                         Grid.ColumnSpan="2"
                         FontSize="15"
                         Text="Pesquise e acompanhe as cidades guardadas."
-                        TextColor="{StaticResource WeatherMutedText}" />
+                        TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
                 </Grid>
 
                 <Border
                     Padding="4"
-                    BackgroundColor="{StaticResource WeatherSurface}"
-                    Stroke="{StaticResource WeatherBlue}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource ColorSurface}, Dark={StaticResource DarkColorSurface}}"
+                    Stroke="{AppThemeBinding Light={StaticResource ColorPrimary}, Dark={StaticResource DarkColorPrimary}}"
                     StrokeThickness="1">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="8" />
                     </Border.StrokeShape>
                     <SearchBar
-                        CancelButtonColor="{StaticResource WeatherMutedText}"
+                        CancelButtonColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}"
                         Placeholder="Pesquisar localidade"
                         SearchCommand="{Binding LoadCommand}"
                         Text="{Binding SearchText}"
-                        TextColor="{StaticResource WeatherText}" />
+                        TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                 </Border>
 
                 <CollectionView ItemsSource="{Binding Locations}" SelectionMode="None">
                     <CollectionView.EmptyView>
                         <VerticalStackLayout Padding="0,32" Spacing="8">
                             <Label
-                                FontAttributes="Bold"
+                                FontFamily="{StaticResource FontFamilySemiBold}"
                                 FontSize="18"
                                 HorizontalTextAlignment="Center"
                                 Text="Sem resultados"
-                                TextColor="{StaticResource WeatherText}" />
+                                TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                             <Label
                                 FontSize="14"
                                 HorizontalTextAlignment="Center"
                                 Text="Tente pesquisar Lisboa ou Porto."
-                                TextColor="{StaticResource WeatherMutedText}" />
+                                TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
                         </VerticalStackLayout>
                     </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>

@@ -53,7 +53,7 @@ public static class IpmaWeatherMapper
             pressure,
             precipitationProbability,
             uvIndex,
-            observation?.Properties.StationName ?? "Sem estacao",
+            observation?.Properties.StationName ?? "Sem estação",
             FormatUpdatedAt(observation?.Properties.Time, forecast.DataUpdate));
     }
 
@@ -112,7 +112,7 @@ public static class IpmaWeatherMapper
     {
         return weatherTypes.TryGetValue(weatherTypeId, out var description)
             ? description
-            : "Sem informacao";
+            : "Sem informação";
     }
 
     private static string GetWeatherIcon(int weatherTypeId)
@@ -152,10 +152,13 @@ public static class IpmaWeatherMapper
 
         if (date.Date == today.AddDays(1))
         {
-            return "Amanha";
+            return "Amanhã";
         }
 
-        return date.ToString("ddd dd/MM", CultureInfo.GetCultureInfo("pt-PT"));
+        var culture = CultureInfo.GetCultureInfo("pt-PT");
+        var dayName = culture.TextInfo.ToTitleCase(date.ToString("dddd", culture));
+
+        return $"{dayName} ({date:dd/MM})";
     }
 
     private static double EstimateWindSpeedKmh(int windSpeedClass)

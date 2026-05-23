@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Style TargetType="Border" x:Key="WeatherCardBorder">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource ColorSurface}, Dark={StaticResource DarkColorSurface}}" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource ColorLine}, Dark={StaticResource DarkColorLine}}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape">
+            <RoundRectangle CornerRadius="8" />
+        </Setter>
+    </Style>
+
+    <Style TargetType="Border" x:Key="StatusWarningBorder">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource ColorWarningSurface}, Dark={StaticResource DarkColorWarningSurface}}" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource ColorWarning}, Dark={StaticResource DarkColorWarning}}" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="StrokeShape">
+            <RoundRectangle CornerRadius="8" />
+        </Setter>
+    </Style>
+
+    <Style TargetType="Border" x:Key="WeatherBadgeBorder">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource ColorBadgeSurface}, Dark={StaticResource DarkColorBadgeSurface}}" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="StrokeShape">
+            <RoundRectangle CornerRadius="8" />
+        </Setter>
+    </Style>
+
+    <Style TargetType="Border" x:Key="HeroPillBorder">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource ColorHeroPillSurface}, Dark={StaticResource DarkColorHeroPillSurface}}" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="StrokeShape">
+            <RoundRectangle CornerRadius="8" />
+        </Setter>
+    </Style>
+
+    <Style TargetType="Border" x:Key="HeroMetricTileBorder">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource ColorHeroTileSurface}, Dark={StaticResource DarkColorHeroTileSurface}}" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="StrokeShape">
+            <RoundRectangle CornerRadius="8" />
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -5,45 +5,41 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:components="clr-namespace:MeteoPortugal.App.Components"
     Title="Observação"
-    BackgroundColor="{StaticResource WeatherSky}">
+    BackgroundColor="{AppThemeBinding Light={StaticResource ColorBackground}, Dark={StaticResource DarkColorBackground}}">
     <RefreshView Command="{Binding LoadCommand}" IsRefreshing="{Binding IsLoading}">
         <ScrollView>
             <VerticalStackLayout Padding="24" Spacing="18">
                 <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
                     <Label
-                        FontAttributes="Bold"
+                        FontFamily="{StaticResource FontFamilyBold}"
                         FontSize="30"
                         Text="{Binding Title}"
-                        TextColor="{StaticResource WeatherText}" />
+                        TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                     <Label
                         Grid.Row="1"
                         FontSize="15"
                         Text="{Binding LastUpdated}"
-                        TextColor="{StaticResource WeatherMutedText}" />
+                        TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
                     <Border
                         Grid.Column="1"
                         Grid.RowSpan="2"
                         Padding="10,6"
-                        BackgroundColor="#1A0F6CBD"
-                        StrokeThickness="0"
+                        Style="{StaticResource WeatherBadgeBorder}"
                         VerticalOptions="Center">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="8" />
-                        </Border.StrokeShape>
                         <Label
-                            FontAttributes="Bold"
+                            FontFamily="{StaticResource FontFamilySemiBold}"
                             FontSize="12"
                             Text="{Binding LocationName}"
-                            TextColor="{StaticResource WeatherBlue}" />
+                            TextColor="{AppThemeBinding Light={StaticResource ColorPrimary}, Dark={StaticResource DarkColorPrimary}}" />
                     </Border>
                 </Grid>
 
                 <Border Padding="14" Style="{StaticResource WeatherCardBorder}">
                     <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
                         <Label
-                            FontAttributes="Bold"
+                            FontFamily="{StaticResource FontFamilySemiBold}"
                             Text="Produto"
-                            TextColor="{StaticResource WeatherText}"
+                            TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}"
                             VerticalTextAlignment="Center" />
                         <Picker
                             Grid.Column="1"
@@ -55,16 +51,11 @@
                 <Border
                     IsVisible="{Binding HasStatusMessage}"
                     Padding="14"
-                    BackgroundColor="#FFF6E5"
-                    Stroke="#F4B942"
-                    StrokeThickness="1">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="8" />
-                    </Border.StrokeShape>
+                    Style="{StaticResource StatusWarningBorder}">
                     <Label
                         FontSize="13"
                         Text="{Binding StatusMessage}"
-                        TextColor="#805500" />
+                        TextColor="{AppThemeBinding Light={StaticResource ColorWarningText}, Dark={StaticResource DarkColorWarningText}}" />
                 </Border>
 
                 <VerticalStackLayout IsVisible="{Binding IsMapVisible}" Spacing="16">
@@ -84,27 +75,27 @@
                                     <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" RowSpacing="8">
                                         <VerticalStackLayout Spacing="2">
                                             <Label
-                                                FontAttributes="Bold"
+                                                FontFamily="{StaticResource FontFamilySemiBold}"
                                                 FontSize="17"
                                                 Text="{Binding Name}"
-                                                TextColor="{StaticResource WeatherText}" />
+                                                TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                                             <Label
                                                 FontSize="12"
                                                 Text="{Binding DistanceKm, StringFormat='{0:F1} km de distância'}"
-                                                TextColor="{StaticResource WeatherMutedText}" />
+                                                TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
                                         </VerticalStackLayout>
 
                                         <Label
                                             Grid.Column="1"
-                                            FontAttributes="Bold"
+                                            FontFamily="{StaticResource FontFamilyBold}"
                                             FontSize="28"
                                             Text="{Binding TemperatureCelsius, StringFormat='{0:F1}&#176;'}"
-                                            TextColor="{StaticResource WeatherBlue}" />
+                                            TextColor="{AppThemeBinding Light={StaticResource ColorPrimary}, Dark={StaticResource DarkColorPrimary}}" />
 
                                         <Grid Grid.Row="1" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*" ColumnSpacing="10">
-                                            <Label Text="{Binding HumidityPercent, StringFormat='Hum {0:F0}%'}" TextColor="{StaticResource WeatherMutedText}" />
-                                            <Label Grid.Column="1" Text="{Binding WindSpeedKmh, StringFormat='Vento {0:F0} km/h'}" TextColor="{StaticResource WeatherMutedText}" />
-                                            <Label Grid.Column="2" Text="{Binding PressureHpa, StringFormat='{0:F0} hPa'}" TextColor="{StaticResource WeatherMutedText}" />
+                                            <Label Text="{Binding HumidityPercent, StringFormat='Hum {0:F0}%'}" TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
+                                            <Label Grid.Column="1" Text="{Binding WindSpeedKmh, StringFormat='Vento {0:F0} km/h'}" TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
+                                            <Label Grid.Column="2" Text="{Binding PressureHpa, StringFormat='{0:F0} hPa'}" TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
                                         </Grid>
 
                                         <Label
@@ -112,7 +103,7 @@
                                             Grid.ColumnSpan="2"
                                             FontSize="12"
                                             Text="{Binding ObservedAt, StringFormat='Observado {0}'}"
-                                            TextColor="{StaticResource WeatherMutedText}" />
+                                            TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
                                     </Grid>
                                 </Border>
                             </DataTemplate>
@@ -132,7 +123,7 @@
                     <Label
                         FontSize="12"
                         Text="Conteúdo remoto oficial do IPMA. A disponibilidade e o formato podem variar."
-                        TextColor="{StaticResource WeatherMutedText}" />
+                        TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>

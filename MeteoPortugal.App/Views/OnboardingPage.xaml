@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Bem-vindo"
-    BackgroundColor="{StaticResource WeatherSky}">
+    BackgroundColor="{AppThemeBinding Light={StaticResource ColorBackground}, Dark={StaticResource DarkColorBackground}}">
     <Grid Padding="24" RowDefinitions="Auto,*,Auto" RowSpacing="20">
         <VerticalStackLayout Spacing="16">
             <Image
@@ -15,14 +15,14 @@
 
             <VerticalStackLayout Spacing="8">
                 <Label
-                    FontAttributes="Bold"
+                    FontFamily="{StaticResource FontFamilyBold}"
                     FontSize="32"
                     Text="{Binding Title}"
-                    TextColor="{StaticResource WeatherText}" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                 <Label
                     FontSize="16"
                     Text="{Binding Subtitle}"
-                    TextColor="{StaticResource WeatherMutedText}" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
             </VerticalStackLayout>
         </VerticalStackLayout>
 
@@ -33,16 +33,16 @@
                     Text="Localização inicial" />
                 <Label
                     Grid.Column="1"
-                    FontAttributes="Bold"
+                    FontFamily="{StaticResource FontFamilySemiBold}"
                     FontSize="13"
                     Text="{Binding LocationCount, StringFormat='{0} locais IPMA'}"
-                    TextColor="{StaticResource WeatherBlue}" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorPrimary}, Dark={StaticResource DarkColorPrimary}}" />
             </Grid>
 
             <Border
                 Padding="4"
-                BackgroundColor="{StaticResource WeatherSurface}"
-                Stroke="{StaticResource WeatherBlue}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource ColorSurface}, Dark={StaticResource DarkColorSurface}}"
+                Stroke="{AppThemeBinding Light={StaticResource ColorPrimary}, Dark={StaticResource DarkColorPrimary}}"
                 StrokeThickness="1">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8" />
@@ -50,7 +50,7 @@
                 <SearchBar
                     Placeholder="Pesquisar localidade"
                     Text="{Binding SearchText}"
-                    TextColor="{StaticResource WeatherText}" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
             </Border>
 
             <CollectionView
@@ -62,10 +62,10 @@
                     <DataTemplate>
                         <Label
                             Padding="2,8,2,6"
-                            FontAttributes="Bold"
+                            FontFamily="{StaticResource FontFamilySemiBold}"
                             FontSize="13"
                             Text="{Binding Name}"
-                            TextColor="{StaticResource WeatherBlue}" />
+                            TextColor="{AppThemeBinding Light={StaticResource ColorPrimary}, Dark={StaticResource DarkColorPrimary}}" />
                     </DataTemplate>
                 </CollectionView.GroupHeaderTemplate>
                 <CollectionView.EmptyView>
@@ -73,7 +73,7 @@
                         Padding="0,24"
                         HorizontalTextAlignment="Center"
                         Text="Sem localidades encontradas."
-                        TextColor="{StaticResource WeatherMutedText}" />
+                        TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
                 </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -83,21 +83,21 @@
                             Style="{StaticResource WeatherCardBorder}">
                             <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" RowSpacing="4">
                                 <Label
-                                    FontAttributes="Bold"
+                                    FontFamily="{StaticResource FontFamilySemiBold}"
                                     FontSize="19"
                                     Text="{Binding Name}"
-                                    TextColor="{StaticResource WeatherText}" />
+                                    TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                                 <Label
                                     Grid.Row="1"
                                     FontSize="13"
                                     Text="{Binding District, StringFormat='Região {0}'}"
-                                    TextColor="{StaticResource WeatherMutedText}" />
+                                    TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
                                 <Label
                                     Grid.Column="1"
                                     Grid.RowSpan="2"
-                                    FontAttributes="Bold"
+                                    FontFamily="{StaticResource FontFamilySemiBold}"
                                     Text="Escolher"
-                                    TextColor="{StaticResource WeatherBlue}"
+                                    TextColor="{AppThemeBinding Light={StaticResource ColorPrimary}, Dark={StaticResource DarkColorPrimary}}"
                                     VerticalTextAlignment="Center" />
                             </Grid>
                         </Border>

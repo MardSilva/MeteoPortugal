@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="ColorPrimary">#0A67C7</Color>
+    <Color x:Key="ColorPrimaryDark">#073B8E</Color>
+    <Color x:Key="ColorAccent">#2FB7FF</Color>
+    <Color x:Key="ColorBackground">#EAF6FF</Color>
+    <Color x:Key="ColorSurface">#FFFFFF</Color>
+    <Color x:Key="ColorSurfaceAlt">#F4F8FB</Color>
+    <Color x:Key="ColorTextPrimary">#102A43</Color>
+    <Color x:Key="ColorTextSecondary">#5B6773</Color>
+    <Color x:Key="ColorLine">#D7E3EF</Color>
+    <Color x:Key="ColorSun">#FFCC3D</Color>
+    <Color x:Key="ColorWarningSurface">#FFF6E5</Color>
+    <Color x:Key="ColorWarning">#F4B942</Color>
+    <Color x:Key="ColorWarningText">#805500</Color>
+    <Color x:Key="ColorBadgeSurface">#1A0F6CBD</Color>
+    <Color x:Key="ColorHeroTextSecondary">#DDEEFF</Color>
+    <Color x:Key="ColorHeroTextStrong">#EAF6FF</Color>
+    <Color x:Key="ColorHeroPillSurface">#2CFFFFFF</Color>
+    <Color x:Key="ColorHeroTileSurface">#24FFFFFF</Color>
+
+    <Color x:Key="WeatherBlue">#0A67C7</Color>
+    <Color x:Key="WeatherBlueDark">#073B8E</Color>
+    <Color x:Key="WeatherSky">#EAF6FF</Color>
+    <Color x:Key="WeatherSurface">#FFFFFF</Color>
+    <Color x:Key="WeatherText">#102A43</Color>
+    <Color x:Key="WeatherMutedText">#5B6773</Color>
+    <Color x:Key="WeatherLine">#D7E3EF</Color>
+    <Color x:Key="WeatherSun">#FFCC3D</Color>
+
+    <LinearGradientBrush x:Key="WeatherHeroBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#2FB7FF" Offset="0.0" />
+        <GradientStop Color="#0F6CBD" Offset="0.48" />
+        <GradientStop Color="#073B8E" Offset="1.0" />
+    </LinearGradientBrush>
+</ResourceDictionary>

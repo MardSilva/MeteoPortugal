@@ -16,8 +16,9 @@ namespace MeteoPortugal.App
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("Manrope-Regular.ttf", "Manrope");
+                    fonts.AddFont("Manrope-SemiBold.ttf", "ManropeSemiBold");
+                    fonts.AddFont("Manrope-Bold.ttf", "ManropeBold");
                 });
 
             builder.Services.AddSingleton(new HttpClient

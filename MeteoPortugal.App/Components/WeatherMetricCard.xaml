@@ -8,17 +8,17 @@
             <Label
                 FontSize="13"
                 Text="{Binding Title}"
-                TextColor="{StaticResource WeatherMutedText}" />
+                TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
             <HorizontalStackLayout Spacing="4">
                 <Label
-                    FontAttributes="Bold"
+                    FontFamily="{StaticResource FontFamilySemiBold}"
                     FontSize="22"
                     Text="{Binding Value}"
-                    TextColor="{StaticResource WeatherText}" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                 <Label
                     FontSize="14"
                     Text="{Binding Unit}"
-                    TextColor="{StaticResource WeatherMutedText}"
+                    TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}"
                     VerticalTextAlignment="End" />
             </HorizontalStackLayout>
         </VerticalStackLayout>

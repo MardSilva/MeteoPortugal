@@ -3,14 +3,11 @@
     x:Class="MeteoPortugal.App.Components.WeatherWarningCard"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <Border Padding="16" BackgroundColor="#FFF6E5" Stroke="#F4B942" StrokeThickness="1">
-        <Border.StrokeShape>
-            <RoundRectangle CornerRadius="8" />
-        </Border.StrokeShape>
+    <Border Padding="16" Style="{StaticResource StatusWarningBorder}">
         <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="6">
             <Border
                 Grid.RowSpan="3"
-                BackgroundColor="#F4B942"
+                BackgroundColor="{AppThemeBinding Light={StaticResource ColorWarning}, Dark={StaticResource DarkColorWarning}}"
                 HeightRequest="34"
                 StrokeThickness="0"
                 VerticalOptions="Start"
@@ -19,7 +16,7 @@
                     <RoundRectangle CornerRadius="8" />
                 </Border.StrokeShape>
                 <Label
-                    FontAttributes="Bold"
+                    FontFamily="{StaticResource FontFamilySemiBold}"
                     HorizontalTextAlignment="Center"
                     Text="!"
                     TextColor="White"
@@ -28,16 +25,16 @@
 
             <Grid Grid.Column="1" ColumnDefinitions="*,Auto">
                 <Label
-                    FontAttributes="Bold"
+                    FontFamily="{StaticResource FontFamilySemiBold}"
                     FontSize="16"
                     Text="{Binding Type}"
-                    TextColor="{StaticResource WeatherText}" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                 <Label
                     Grid.Column="1"
-                    FontAttributes="Bold"
+                    FontFamily="{StaticResource FontFamilySemiBold}"
                     FontSize="12"
                     Text="{Binding Level}"
-                    TextColor="#B36B00" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorWarningText}, Dark={StaticResource DarkColorWarningText}}" />
             </Grid>
 
             <Label
@@ -45,13 +42,13 @@
                 Grid.Row="1"
                 FontSize="13"
                 Text="{Binding Text}"
-                TextColor="{StaticResource WeatherMutedText}" />
+                TextColor="{AppThemeBinding Light={StaticResource ColorTextSecondary}, Dark={StaticResource DarkColorTextSecondary}}" />
 
             <Label
                 Grid.Column="1"
                 Grid.Row="2"
                 FontSize="12"
-                TextColor="#805500">
+                TextColor="{AppThemeBinding Light={StaticResource ColorWarningText}, Dark={StaticResource DarkColorWarningText}}">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="De " />

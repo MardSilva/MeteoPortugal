@@ -4,7 +4,7 @@ namespace MeteoPortugal.App.ViewModels;
 
 public partial class DailyInfoEditViewModel : ObservableObject
 {
-    public string Title { get; } = "Editar informacao diaria";
+    public string Title { get; } = "Editar informação diária";
 
-    public string Message { get; } = "Area preparada para configuracoes diarias futuras.";
+    public string Message { get; } = "Área preparada para configurações diárias futuras.";
 }

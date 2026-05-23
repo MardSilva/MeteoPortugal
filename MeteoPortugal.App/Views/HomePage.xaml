@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:components="clr-namespace:MeteoPortugal.App.Components"
     Title="Hoje"
-    BackgroundColor="{StaticResource WeatherSky}">
+    BackgroundColor="{AppThemeBinding Light={StaticResource ColorBackground}, Dark={StaticResource DarkColorBackground}}">
     <RefreshView Command="{Binding LoadCommand}" IsRefreshing="{Binding IsLoading}">
         <ScrollView>
             <VerticalStackLayout Padding="24" Spacing="22">
@@ -22,23 +22,15 @@
                 <Border
                     IsVisible="{Binding HasStatusMessage}"
                     Padding="14"
-                    BackgroundColor="#FFF6E5"
-                    Stroke="#F4B942"
-                    StrokeThickness="1">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="8" />
-                    </Border.StrokeShape>
-                    <Label
-                        FontSize="13"
-                        Text="{Binding StatusMessage}"
-                        TextColor="#805500" />
+                    Style="{StaticResource StatusWarningBorder}">
+                    <Label FontSize="13" Text="{Binding StatusMessage}" TextColor="{AppThemeBinding Light={StaticResource ColorWarningText}, Dark={StaticResource DarkColorWarningText}}" />
                 </Border>
 
                 <VerticalStackLayout IsVisible="{Binding HasWarnings}" Spacing="12">
                     <Label
                         Style="{StaticResource SectionTitleLabel}"
                         Text="Avisos meteorológicos"
-                        TextColor="{StaticResource WeatherText}" />
+                        TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                     <CollectionView ItemsSource="{Binding Warnings}" SelectionMode="None">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -51,7 +43,7 @@
                 <Label
                     Style="{StaticResource SectionTitleLabel}"
                     Text="Detalhes"
-                    TextColor="{StaticResource WeatherText}" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                 <CollectionView ItemsSource="{Binding Metrics}" SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="12" VerticalItemSpacing="12" />
@@ -66,7 +58,7 @@
                 <Label
                     Style="{StaticResource SectionTitleLabel}"
                     Text="Próximas horas"
-                    TextColor="{StaticResource WeatherText}" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                 <CollectionView ItemsSource="{Binding HourlyForecast}" SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12" />
@@ -81,7 +73,7 @@
                 <Label
                     Style="{StaticResource SectionTitleLabel}"
                     Text="Próximos dias"
-                    TextColor="{StaticResource WeatherText}" />
+                    TextColor="{AppThemeBinding Light={StaticResource ColorTextPrimary}, Dark={StaticResource DarkColorTextPrimary}}" />
                 <CollectionView ItemsSource="{Binding DailyForecast}" SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -93,3 +85,4 @@
         </ScrollView>
     </RefreshView>
 </ContentPage>
+

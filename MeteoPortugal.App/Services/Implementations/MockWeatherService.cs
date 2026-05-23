@@ -11,8 +11,8 @@ public sealed class MockWeatherService : IWeatherService
     public Task<WeatherSummary> GetCurrentWeatherAsync(string locationId, CancellationToken cancellationToken = default)
     {
         var summary = NormalizeLocationId(locationId) == "porto"
-            ? new WeatherSummary(Porto, "Ceu pouco nublado", "w_ic_d_02.svg", 18, 14, 21, 72, 18, 1015, 35, 4, "Porto", "Atualizado as 15:00")
-            : new WeatherSummary(Lisbon, "Ceu limpo", "w_ic_d_01.svg", 22, 16, 26, 58, 12, 1018, 5, 7, "Lisboa", "Atualizado as 15:00");
+            ? new WeatherSummary(Porto, "Céu pouco nublado", "w_ic_d_02.svg", 18, 14, 21, 72, 18, 1015, 35, 4, "Porto", "Atualizado às 15:00")
+            : new WeatherSummary(Lisbon, "Céu limpo", "w_ic_d_01.svg", 22, 16, 26, 58, 12, 1018, 5, 7, "Lisboa", "Atualizado às 15:00");
 
         return Task.FromResult(summary);
     }
@@ -42,13 +42,13 @@ public sealed class MockWeatherService : IWeatherService
             ? new[]
             {
                 new ForecastDailyItemModel("Hoje", "Nublado", "w_ic_d_04.svg", 14, 21),
-                new ForecastDailyItemModel("Amanha", "Chuva fraca", "w_ic_d_10.svg", 13, 19),
+                new ForecastDailyItemModel("Amanhã", "Chuva fraca", "w_ic_d_10.svg", 13, 19),
                 new ForecastDailyItemModel("Domingo", "Abertas", "w_ic_d_03.svg", 12, 20)
             }
             : new[]
             {
                 new ForecastDailyItemModel("Hoje", "Limpo", "w_ic_d_01.svg", 16, 26),
-                new ForecastDailyItemModel("Amanha", "Pouco nublado", "w_ic_d_02.svg", 15, 25),
+                new ForecastDailyItemModel("Amanhã", "Pouco nublado", "w_ic_d_02.svg", 15, 25),
                 new ForecastDailyItemModel("Domingo", "Limpo", "w_ic_d_01.svg", 17, 27)
             };
 
