@@ -48,19 +48,8 @@
 
                 <CollectionView
                     Grid.Row="2"
-                    IsGrouped="True"
-                    ItemsSource="{Binding GroupedLocations}"
+                    ItemsSource="{Binding FilteredLocations}"
                     SelectionMode="None">
-                    <CollectionView.GroupHeaderTemplate>
-                        <DataTemplate>
-                            <Label
-                                Padding="2,8,2,6"
-                                FontAttributes="Bold"
-                                FontSize="13"
-                                Text="{Binding Name}"
-                                TextColor="{StaticResource WeatherBlue}" />
-                        </DataTemplate>
-                    </CollectionView.GroupHeaderTemplate>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border

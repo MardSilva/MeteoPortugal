@@ -34,7 +34,7 @@ public partial class SettingsViewModel : ObservableObject
 
     public string Title { get; } = "Definicoes";
 
-    public ObservableCollection<LocationGroup> GroupedLocations { get; } = [];
+    public ObservableCollection<WeatherLocation> FilteredLocations { get; } = [];
 
     public ObservableCollection<string> Themes { get; } =
     [
@@ -105,34 +105,33 @@ public partial class SettingsViewModel : ObservableObject
 
     private void ApplyLocationFilter()
     {
-        GroupedLocations.Clear();
-
         var query = LocationSearchText.Trim();
-        var filteredLocations = string.IsNullOrWhiteSpace(query)
+        var filteredLocations = (string.IsNullOrWhiteSpace(query)
             ? allLocations
             : allLocations.Where(location =>
                 location.Name.Contains(query, StringComparison.OrdinalIgnoreCase) ||
-                location.District.Contains(query, StringComparison.OrdinalIgnoreCase));
+                location.District.Contains(query, StringComparison.OrdinalIgnoreCase)))
+            .ToList();
 
-        var groupedLocations = filteredLocations
+        var visibleLocations = filteredLocations
             .Take(24)
-            .GroupBy(location => location.District)
-            .OrderBy(group => group.Key);
+            .ToList();
 
-        if (SelectedLocation is not null && 
-            !groupedLocations.SelectMany(group => group).Any(location => location.Id == SelectedLocation.Id))
+        if (SelectedLocation is not null &&
+            visibleLocations.All(location => location.Id != SelectedLocation.Id))
         {
-            groupedLocations = filteredLocations
+            visibleLocations = filteredLocations
                 .Prepend(SelectedLocation)
                 .DistinctBy(location => location.Id)
                 .Take(24)
-                .GroupBy(location => location.District)
-                .OrderBy(group => group.Key);
+                .ToList();
         }
 
-        foreach (var group in groupedLocations)
+        FilteredLocations.Clear();
+
+        foreach (var location in visibleLocations)
         {
-            GroupedLocations.Add(new LocationGroup(group.Key, group));
+            FilteredLocations.Add(location);
         }
 
         LocationCount = allLocations.Count;
